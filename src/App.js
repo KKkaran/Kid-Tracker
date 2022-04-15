@@ -9,7 +9,6 @@ function App() {
         <div>
           <h3>Kid-Trackers</h3>
           <Main></Main>
-          thi is
         </div>
       </header>
     </div>

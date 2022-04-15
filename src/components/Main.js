@@ -9,6 +9,7 @@ const Main = ()=>{
         long: -79.785635
     }
 
+    const [status,setStatus] = useState("")
     const [location,setLocation] = useState({
         lat:0,
         long:0
@@ -25,8 +26,10 @@ const Main = ()=>{
         console.log(distance ,"km")
         if(distance * 1000 < 500){
             console.log("within perimter")
+            setStatus("Within perimter")
         }else{
             console.log("we have a runner")
+            setStatus("We have a runner")
         }
 
 
@@ -72,8 +75,11 @@ const Main = ()=>{
     }
     return(
         <>
-            <h2>This is the location</h2>
+           
             {getLocation()}
+
+            <h2>{status}</h2>
+
 
         </>
                 
