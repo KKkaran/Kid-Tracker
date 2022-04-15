@@ -20,7 +20,7 @@ const Main = ()=>{
         console.log(location)
         //do the maths
 
-        const distance = getDistanceFromLatLonInKm(start.lat,start.long,location.lat,location.long)
+        const distance = getDistanceFromLatLonInKm(start.lat,start.long,location.lat,location.long) 
 
         console.log(distance ,"km")
         if(distance * 1000 < 500){
