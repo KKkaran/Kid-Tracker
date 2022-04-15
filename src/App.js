@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import Main from './components/Main';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          Karan Singh Sodhi
           <h3>Kid-Trackers</h3>
+          <Main></Main>
         </div>
       </header>
     </div>
