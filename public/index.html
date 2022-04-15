@@ -59,6 +59,7 @@
 
     console.log(latitude)
     console.log(longitude)
+    console.log("working")
   }
 
   function error() {
@@ -67,6 +68,7 @@
 
   if(!navigator.geolocation) {
     status.textContent = 'Geolocation is not supported by your browser';
+    console.log("not working")
   } else {
     status.textContent = 'Locating…';
     navigator.geolocation.getCurrentPosition(success, error);
