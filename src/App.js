@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Main from './components/Main';
 
@@ -10,6 +9,7 @@ function App() {
         <div>
           <h3>Kid-Trackers</h3>
           <Main></Main>
+          thi is
         </div>
       </header>
     </div>
