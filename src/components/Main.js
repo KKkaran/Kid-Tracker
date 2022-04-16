@@ -11,8 +11,8 @@ const Main = ()=>{
 
     const [status,setStatus] = useState("")
     const [location,setLocation] = useState({
-        lat:0,
-        long:0
+        lat:start.lat,
+        long:start.long
     })
 
     //this useeffect will calcluate the distance everytime the llocation changes
@@ -54,6 +54,11 @@ const Main = ()=>{
     return deg * (Math.PI/180)
     }
     const getLocation = ()=>{
+        var options = {
+            maximumAge: 10000,
+            timeout: 10000,
+            enableHighAccuracy: true,
+         }
         function success(position) {
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
