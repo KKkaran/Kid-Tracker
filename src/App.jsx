@@ -1,5 +1,6 @@
-import './App.css';
-import Main from './components/Main';
+import React from "react";
+import "./App.css";
+import Main from "./components/Main.jsx";
 
 
 function App() {
@@ -17,5 +18,5 @@ function App() {
 
 export default App;
 
-
+// TODO: PLEASE HIDE THIS IF THIS IS SECRET 
 //RESZK5QF ------ 3-words API KEY
