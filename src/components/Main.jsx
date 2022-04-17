@@ -16,7 +16,7 @@ const Main = () => {
     });
 
     const getDistanceFromLatLonInKm = useCallback((lat1, lon1, lat2, lon2) => {
-        let R = 6371; // Radius of the earth in km
+        let radiusOfEarth = 6371;
         // degree lat/lon?
         let dLat = deg2rad(lat2 - lat1);  // deg2rad below
         let dLon = deg2rad(lon2 - lon1);
@@ -27,7 +27,7 @@ const Main = () => {
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         // what is c?
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        let distanceInKm = R * c; // Distance in km
+        let distanceInKm = radiusOfEarth * c;
         return distanceInKm;
     }, []);
 
