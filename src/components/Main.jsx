@@ -15,15 +15,15 @@ const Main = () => {
         long: start.long
     });
 
-    const getDistanceFromLatLonInKm = useCallback((lat1, lon1, lat2, lon2) => {
+    const getDistanceFromLatLonInKm = useCallback((startLat, startLon, locationLat, locationLong) => {
         let radiusOfEarth = 6371;
         // degree lat/lon?
-        let dLat = deg2rad(lat2 - lat1);  // deg2rad below
-        let dLon = deg2rad(lon2 - lon1);
+        let dLat = deg2rad(locationLat - startLat);  // deg2rad below
+        let dLon = deg2rad(locationLong - startLon);
         //what is a?
         let a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.cos(deg2rad(startLat)) * Math.cos(deg2rad(locationLat)) *
             Math.sin(dLon / 2) * Math.sin(dLon / 2);
         // what is c?
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
