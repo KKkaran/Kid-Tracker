@@ -17,16 +17,18 @@ const Main = () => {
 
     const getDistanceFromLatLonInKm = useCallback((lat1, lon1, lat2, lon2) => {
         let R = 6371; // Radius of the earth in km
+        // degree lat/lon?
         let dLat = deg2rad(lat2 - lat1);  // deg2rad below
         let dLon = deg2rad(lon2 - lon1);
+        //what is a?
         let a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2)
-            ;
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        // what is c?
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        let d = R * c; // Distance in km
-        return d;
+        let distanceInKm = R * c; // Distance in km
+        return distanceInKm;
     }, []);
 
     //this useeffect will calcluate the distance everytime the llocation changes
@@ -46,8 +48,6 @@ const Main = () => {
             setStatus("We have a runner");
         }
 
-
-
         //including other dependencies to satisfy exhaustive deps warnings
     }, [location, getDistanceFromLatLonInKm, start.lat, start.long]);
 
@@ -62,6 +62,7 @@ const Main = () => {
             enableHighAccuracy: true,
         };
         function success(position) {
+
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
@@ -82,15 +83,9 @@ const Main = () => {
     };
     return (
         <>
-
             {getLocation()}
-
             <h2>{status}</h2>
-
-
         </>
-
-
     );
 };
 
