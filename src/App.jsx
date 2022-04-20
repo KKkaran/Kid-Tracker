@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Main from "./components/Main.jsx";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          Karan Singh Sodhi
-          <h3>Kid-Tracker</h3>
+          <h3>Kid-Trackers</h3>
+          <Main></Main>
         </div>
       </header>
     </div>
@@ -16,5 +17,5 @@ function App() {
 
 export default App;
 
-
+// TODO: PLEASE HIDE THIS IF THIS IS SECRET
 //RESZK5QF ------ 3-words API KEY
