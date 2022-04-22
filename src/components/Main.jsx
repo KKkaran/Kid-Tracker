@@ -1,22 +1,21 @@
-import React, { useEffect, useState, useCallback } from "react";
-
+import React, { useEffect, useState, useCallback, useRef } from "react";
 //lets put the current location in state
 
 const Main = () => {
-
     // hard coded position of admin
     const adminPosition = {
         lat: 43.69291,
         long: -79.785635
     };
-
-    const [status, setStatus] = useState("");
+    const isMounted = useRef(false);
+    const [status, setStatus] = useState("Loading");
     const [location, setLocation] = useState({
-        lat: adminPosition.lat,
-        long: adminPosition.long
+        lat: "",
+        long: ""
     });
 
     const getDistanceFromLatLonInKm = useCallback((startLat, startLong, locationLat, locationLong) => {
+        console.log("testing the maths")
         let radiusOfEarth = 6371;
         // degree lat/lon?
         let dLat = deg2rad(locationLat - startLat);  // deg2rad below
@@ -35,20 +34,24 @@ const Main = () => {
 
     //this useeffect will calcluate the distance everytime the llocation changes
     useEffect(() => {
-        console.log("location changed!!!");
-        console.log("here is location", location.lat, location.long);
-        //do the maths
+        if (isMounted.current) {
+            console.log("location changed!!!");
+                console.log("here is location", location.lat, location.long);
+                //do the maths
 
-        const distance = getDistanceFromLatLonInKm(adminPosition.lat, adminPosition.long, location.lat, location.long);
+                const distance = getDistanceFromLatLonInKm(adminPosition.lat, adminPosition.long, location.lat, location.long);
 
-        console.log(distance, "km");
-        if (distance * 1000 < 500) {
-            console.log("within perimter");
-            setStatus("Within perimter");
-        } else {
-            console.log("we have a runner");
-            setStatus("We have a runner");
-        }
+                console.log(distance, "km");
+                if (distance * 1000 < 500) {
+                    console.log("within perimter");
+                    setStatus("Within perimter");
+                } else {
+                    console.log("we have a runner");
+                    setStatus("We have a runner");
+                }
+          } else {
+            isMounted.current = true;
+          }
         //including other dependencies to satisfy exhaustive deps warnings
     }, [location.lat, location.long, adminPosition.lat, adminPosition.long, getDistanceFromLatLonInKm]);
 
@@ -95,6 +98,7 @@ const Main = () => {
     return (
         <>
             {getLocation()}
+            {console.log(`Status of Subject:${status}`)}
             <h2>{status}</h2>
         </>
     );

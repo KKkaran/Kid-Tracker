@@ -7,12 +7,12 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <h3>Kid-Trackers</h3>
+          <h3>Let`s track them pets!!</h3>
           <Main></Main>
         </div>
       </header>
     </div>
-  );
+    );
 }
 
 export default App;
