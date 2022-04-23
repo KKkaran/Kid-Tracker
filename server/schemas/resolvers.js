@@ -2,7 +2,7 @@ const resolvers = {
 
     Query:{
         Hello: ()=>{
-            return "Karan Sodhi"
+            return "Karan Sodhis"
         }
     }
 }
